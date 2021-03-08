@@ -1,0 +1,70 @@
+********************************************************************************
+
+README
+TEMA 2 SD
+BUF SORINA-ANAMARIA
+
+********************************************************************************
+
+	Cele trei taskuri sunt implementate in functiile freq.c, hash.c, hll.c.
+
+TASK I
+
+	Primul task este implementat integral in functia main si a constat in creearea
+	unui vector de frecventa pe care la inceput il aloc si initializez cu 0. Pe 
+	masura ce numerele sunt citite, pe pozitia din vector aferenta valorii 
+	numarului citit maresc cu o unitate numarul de aparitii stocat in bucketul
+	respectiv. La final, afisez perechile valoare -  numar de aparitii.
+
+TASK II
+
+	Al doilea task a constat in calcularea numarului de aparitii al mai multor 
+	siruri de caractere, folosind un Hashtable cu politica de rezolvare a 
+	conflictelor de tip open addressing prin linear probing, care presupune faptul 
+	ca, in momentul in care bucketul unde trebuie realizata insertia este ocupat, 
+	se cauta prima pozitie libera dupa bucketul respectiv. Daca se ajunge la finalul
+	hashtable-ului, cautarea se reia de la inceputul structurii.
+
+	Taskul este implementat in urmatoarele functii:
+
+	-unsigned int hash_function_string(char key[LENGTH])
+		functia folosita pentru calcularea hash-ului stringurilor
+
+	-void collision_same_word(struct Hashtable *ht, unsigned int index,
+                         char word[LENGTH])
+        functia folosita pentru rezolvarea coliziunilor in cazul in care bucketul
+        unde trebuie realizata insertia contine deja un string identic
+
+    -void collision_different_word(struct Hashtable *ht, unsigned int index,
+                              char word[LENGTH])
+        functia folosita pentru rezolvarea coliziunilor in cazul in care bucketul
+        unde trebuie realizata insertia contine un string diferit
+
+    void print_words(struct Hashtable *ht)
+    	functia folosita pentru printarea perechilor cuvant - numar de aparitii
+
+    De asemenea, functiile implementate mai sus sunt apelate in functia main, care
+    initializeaza hashtable-ul, citeste cuvintele si calculeaza numarul de aparitii 
+    al fiecarui string.
+
+TASK III
+
+	Al treilea task a constat in implementarea algoritmului HyperLogLog folosit 
+	pentru calcularea numarului de aparitii distincte al unui sir de numere.
+
+	Taskul este implementat in urmatoarele functii:
+
+	-unsigned int hash_integer(void *a)
+		functia folosita pentru calcularea hash-ului inturilor
+
+	-double power(int x)
+		functia folosita pentru calcularea puterilor lui 2
+
+	De asemenea, functiile implementate mai sus sunt apelate in functia main, 
+	care citeste numerele si urmeaza pasii algoritmului HyperLogLog: initializarea 
+	unui vector M de marimea 2048; pentru fiecarea numar calcularea hash-ului, 
+	calcularea indexului bucketului corespunzator, calcularea numarului de 
+	biti 0 initiali; agregarea valorilor din toate bucketurile si determinarea 
+	numarului de elemente distincte intalnite.
+
+********************************************************************************
